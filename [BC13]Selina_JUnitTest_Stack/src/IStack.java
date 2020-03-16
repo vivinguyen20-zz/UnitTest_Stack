@@ -1,7 +1,7 @@
 
 public interface IStack {
 	void Clear();
-	boolean Contains(int i);
+	boolean Contains(Integer numberi);
 	Integer Peek();
 	void Push(Integer number);
 	void Pop();

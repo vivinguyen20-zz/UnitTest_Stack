@@ -1,15 +1,17 @@
 
-public class Stack {
+public class Stack implements IStack{
 	private final int size = 10;
     private Integer[] stack = new Integer[size]; 
     private int top = -1;
     
 	public Stack() {
 		
-	}	
-	public int Top() {
+	}
+	@Override
+	public Integer Top() {
 		return top;
 	}
+	@Override
 	public boolean IsEmpty() {
 		if (top == -1) {
 			System.out.println("Stack is empty");
@@ -17,11 +19,11 @@ public class Stack {
 		}
 		return false;
 	}
-	
-	public boolean Contains(int item) {
+	@Override
+	public boolean Contains(Integer number) {
 		if (!IsEmpty()) {
 			for (int i = 0; i < stack.length; i ++) {
-				if (stack[i].equals(item)) {
+				if (stack[i].equals(number)) {
 					return true;
 				}
 			}
@@ -29,16 +31,7 @@ public class Stack {
 		return false;
 	}
 	
-	public void Push(int item){
-		if(top == stack.length -1) {
-			System.out.println("Stack is full");
-			return;
-		}
-		
-		top++;
-		stack[top] = item;
-	}
-	
+	@Override
 	public void Pop()  {
 		if(IsEmpty()) {
 			System.out.println("Stack is full");
@@ -48,15 +41,15 @@ public class Stack {
 		top--;
 	
 	}
-	
-	public int Peek() {
+	@Override
+	public Integer Peek() {
 		if(IsEmpty()) {
 			System.out.println("Stack is empty");
 		}
 		return stack[top];
 	}
 	
-	
+	@Override
 	public void Clear(){		
 		if (IsEmpty()) {
 			System.out.println("Stack is empty");
@@ -65,6 +58,19 @@ public class Stack {
 		for (int i = top; i >= 0; i --) {
 			Pop();
 		}
+	}
+	
+	@Override
+	public void Push(Integer number) {
+	
+		if(top == stack.length -1) {
+			System.out.println("Stack is full");
+			return;
+		}
+		
+		top++;
+		stack[top] = number;
+		
 	}
 }
 
